@@ -28,7 +28,7 @@ var Flight = function () {
         data.actualArrive = Date.now();
     };
 
-    this.getInfomation = function () {
+    this.getInformation = function () {
         return data;
     };
 };

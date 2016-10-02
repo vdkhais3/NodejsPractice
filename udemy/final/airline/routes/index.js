@@ -7,6 +7,7 @@ var flight = require('../flight');
 var flights = []; // A collection of flight objects
 
 for (var number in data) {
+    //console.log(number);
     flights[number] = flight(data[number]);
 }
 
@@ -17,7 +18,7 @@ router.get('/flight/:number', function (req, res, next) {
     if (typeof flights[number] === 'undefined') {
         res.status(400).json({status: 'error'});
     } else {
-        res.status(200).json(flights[number].getInfomation());
+        res.status(200).json(flights[number].getInformation());
     }
 });
 
@@ -30,6 +31,11 @@ router.put('/flight/:number/arrived', function (req, res, next) {
         flights[number].triggerArrive();
         res.status(200).json({status: 'done'});
     }
+});
+
+router.get('/list', function (req, res, next) {
+    //console.log(flights[13].getInformation());
+    res.render('list', {title: 'All Flights', flights: flights});
 });
 
 // var flight1 = flight({
